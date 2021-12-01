@@ -14,6 +14,8 @@ BuildRequires:  cxxopts-devel
 BuildRequires:  elfio-devel
 BuildRequires:  termcolor-devel
 
+Provides:       %{_bindir}/libtree
+
 %description
 A tool that:
 - turns ldd into a tree
