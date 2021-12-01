@@ -8,7 +8,7 @@ Summary:        Header-only C++ library for printing colored messages to the ter
 License:        BSD
 URL:            https://github.com/ikalnytskyi/termcolor
 Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz
-Patch0:         0001-Use-GNUInstallDirs-for-install-targets.patch
+#Patch0:         0001-Use-GNUInstallDirs-for-install-targets.patch
 
 BuildRequires:  gcc-c++
 BuildRequires:  cmake
