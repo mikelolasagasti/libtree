@@ -46,7 +46,7 @@ used such terminals (most *nix systems, including Linux and Mac OS).
 %license LICENSE
 %doc README.rst
 %{_includedir}/%{name}/
-%{_libdir}/cmake/%{name}/
+%{_prefix}/lib/cmake/%{name}/
 
 
 %changelog
