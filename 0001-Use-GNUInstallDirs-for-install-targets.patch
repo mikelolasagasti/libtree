@@ -1,0 +1,53 @@
+From e9f38acf1dbfa4425080cd2e9286e27fd8f4c7b8 Mon Sep 17 00:00:00 2001
+From: Mikel Olasagasti Uranga <mikel@olasagasti.info>
+Date: Wed, 1 Dec 2021 15:13:15 +0100
+Subject: [PATCH] Use GNUInstallDirs for install targets
+
+Distributions like Fedora use /usr/lib64 for their 64bit versions and termcolor
+has hardcoded /usr/lib install path. By using `GNUInstallDirs` automatically
+can be detected which path should be used.
+---
+ CMakeLists.txt | 13 ++++++++-----
+ 1 file changed, 8 insertions(+), 5 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 905040f..a6948f7 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -31,25 +31,28 @@ endif()
+ 
+ include(CMakePackageConfigHelpers)
+ 
++# Installation paths
++include(GNUInstallDirs)
++
+ configure_package_config_file(
+   cmake/config.cmake.in
+   ${CMAKE_CURRENT_BINARY_DIR}/generated/${PROJECT_NAME}-config.cmake
+-  INSTALL_DESTINATION lib/cmake/${PROJECT_NAME})
++  INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME})
+ 
+ install(
+   FILES ${CMAKE_CURRENT_BINARY_DIR}/generated/${PROJECT_NAME}-config.cmake
+-  DESTINATION lib/cmake/${PROJECT_NAME})
++  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME})
+ 
+ install(
+   DIRECTORY include/
+-  DESTINATION include)
++  DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+ 
+ install(
+   TARGETS ${PROJECT_NAME}
+   EXPORT ${PROJECT_NAME}-targets
+-  INCLUDES DESTINATION include)
++  INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+ 
+ install(
+   EXPORT ${PROJECT_NAME}-targets
+   NAMESPACE ${PROJECT_NAME}::
+-  DESTINATION lib/cmake/${PROJECT_NAME})
++  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME})
+-- 
+2.33.1
+

@@ -8,10 +8,10 @@ Summary:        Header-only C++ library for printing colored messages to the ter
 License:        BSD
 URL:            https://github.com/ikalnytskyi/termcolor
 Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz
+Patch0:         0001-Use-GNUInstallDirs-for-install-targets.patch
 
 BuildRequires:  gcc-c++
 BuildRequires:  cmake
-BuildRequires:  sed
 
 %description
 Termcolor is a header-only C++ library for printing colored messages to the
@@ -33,9 +33,7 @@ Termcolor uses ANSI color formatting, so you can use it on every system that is
 used such terminals (most *nix systems, including Linux and Mac OS).
 
 %prep
-%setup -q
-sed -i -e 's/DESTINATION lib/DESTINATION lib64/' CMakeLists.txt
-
+%autosetup
 
 %build
 %cmake
