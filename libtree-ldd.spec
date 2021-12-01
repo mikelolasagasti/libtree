@@ -12,6 +12,7 @@ BuildRequires:	cmake
 BuildRequires:	gcc-c++
 BuildRequires:  cxxopts-devel
 BuildRequires:  elfio-devel
+BuildRequires:  termcolor-devel
 
 %description
 A tool that:
