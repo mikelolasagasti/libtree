@@ -8,8 +8,8 @@ License:        MIT
 URL:            https://github.com/haampie/libtree
 Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz
 
-BuildRequires:	cmake
-BuildRequires:	gcc-c++
+BuildRequires:  cmake
+BuildRequires:  gcc-c++
 BuildRequires:  cxxopts-devel
 BuildRequires:  elfio-devel
 BuildRequires:  termcolor-devel
@@ -31,7 +31,7 @@ A tool that:
 %cmake_install
 
 %files
-%{_mandir}/man1/libtree*
+%{_mandir}/man1/libtree.1*
 %{_bindir}/libtree
 %doc README.md
 %license LICENSE
