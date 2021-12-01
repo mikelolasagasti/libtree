@@ -36,5 +36,4 @@ A tool that:
 %license LICENSE
 
 %changelog
-* Mon Mar 08 2021 Mikel Olasagasti Uranga <mikel@olasagasti.info> - 4.0.0-1
-- foo
+%autochangelog
