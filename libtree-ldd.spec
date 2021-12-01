@@ -31,9 +31,9 @@ A tool that:
 %cmake_install
 
 %files
-%{_mandir}/man1/%{name}*
-%{_bindir}/%{name}
-%doc CHANGELOG.md README.md
+%{_mandir}/man1/libtree*
+%{_bindir}/libtree
+%doc README.md
 %license LICENSE
 
 %changelog
