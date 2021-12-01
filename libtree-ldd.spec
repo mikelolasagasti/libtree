@@ -1,7 +1,7 @@
 Name:           libtree-ldd
 Version:        2.0.0
 Release:        %autorelease
-Summary:        ldd as a tree
+Summary:        Like ldd but as a tree
 
 
 License:        MIT
