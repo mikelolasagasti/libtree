@@ -1,5 +1,12 @@
 %global debug_package %{nil}
 
+%global common_description %{expand:
+Termcolor is a header-only C++ library for printing colored messages to the
+terminal. Written just for fun with a help of the Force.
+
+Termcolor uses ANSI color formatting, so you can use it on every system that is
+used such terminals (most *nix systems, including Linux and Mac OS).}
+
 Name:           termcolor
 Version:        2.0.0
 Release:        %autorelease
@@ -14,24 +21,14 @@ Patch0:         0001-Use-GNUInstallDirs-for-install-targets.patch
 BuildRequires:  gcc-c++
 BuildRequires:  cmake
 
-%description
-Termcolor is a header-only C++ library for printing colored messages to the
-terminal. Written just for fun with a help of the Force.
-
-Termcolor uses ANSI color formatting, so you can use it on every system that is
-used such terminals (most *nix systems, including Linux and Mac OS).
+%description %{common_description}
 
 %package devel
 Summary:        %{summary}
 Provides:       %{name}-static = %{version}-%{release}
 Requires:  cmake-filesystem
 
-%description devel
-Termcolor is a header-only C++ library for printing colored messages to the
-terminal. Written just for fun with a help of the Force.
-
-Termcolor uses ANSI color formatting, so you can use it on every system that is
-used such terminals (most *nix systems, including Linux and Mac OS).
+%description devel %{common_description}
 
 %prep
 %autosetup -p1
