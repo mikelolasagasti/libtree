@@ -1,2 +1,0 @@
-# intentionally hardcoded
-addFilter(r'hardcoded-library-path in %{_prefix}/lib/cmake/%{name}')
