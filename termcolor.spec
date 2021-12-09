@@ -24,6 +24,7 @@ used such terminals (most *nix systems, including Linux and Mac OS).
 %package devel
 Summary:        %{summary}
 Provides:       %{name}-static = %{version}-%{release}
+Requires:  cmake-filesystem
 
 %description devel
 Termcolor is a header-only C++ library for printing colored messages to the
@@ -36,11 +37,16 @@ used such terminals (most *nix systems, including Linux and Mac OS).
 %autosetup -p1
 
 %build
-%cmake
+%cmake -DTERMCOLOR_TESTS:BOOL=ON
 %cmake_build
 
 %install
 %cmake_install
+
+# test_termcolor is a visual test
+# It should show colors, but mock will show without colors.
+%check
+%{_builddir}/%{name}-%{version}/redhat-linux-build/test_termcolor
 
 %files devel
 %license LICENSE
