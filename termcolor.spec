@@ -43,7 +43,7 @@ Requires:  cmake-filesystem
 # test_termcolor is a visual test
 # It should show colors, but mock will show without colors.
 %check
-%{_builddir}/%{name}-%{version}/redhat-linux-build/test_termcolor
+%{_vpath_builddir}/test_termcolor
 
 %files devel
 %license LICENSE
