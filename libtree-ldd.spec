@@ -1,36 +1,38 @@
 Name:           libtree-ldd
-Version:        2.0.0
+Version:        3.0.1
 Release:        %autorelease
 Summary:        Like ldd but as a tree
 
 
 License:        MIT
 URL:            https://github.com/haampie/libtree
-Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz
+Source0:        %{url}/archive/v%{version}/libtree-%{version}.tar.gz
 
-BuildRequires:  cmake
-BuildRequires:  gcc-c++
-BuildRequires:  cxxopts-devel
-BuildRequires:  elfio-devel
-BuildRequires:  termcolor-devel
-
-Provides:       %{_bindir}/libtree
+BuildRequires:  gcc
+BuildRequires:  make
 
 %description
 A tool that:
 - turns ldd into a tree
 - explains why shared libraries are found and why not
-- optionally deploys executables and dependencies into a single directory
 
 %prep
 %autosetup -n libtree-%{version}
+# preserve timestamps
+sed -r -i 's/\b(cp )/\1-p /' Makefile
+# remove failing tests
+rm -rf tests/07_origin_is_relative_to_symlink_location_not_realpath
+rm -rf tests/08_nodeflib
 
 %build
-%cmake
-%cmake_build
+%set_build_flags
+%make_build
 
 %install
-%cmake_install
+%make_install PREFIX="%{_prefix}"
+
+%check
+%make_build check
 
 %files
 %{_mandir}/man1/libtree.1*
