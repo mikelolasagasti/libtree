@@ -1,6 +1,6 @@
 Name:           libtree-ldd
 Version:        3.0.1
-Release:        %autorelease
+Release:        1%{?dist}
 Summary:        Like ldd but as a tree
 
 
@@ -18,7 +18,7 @@ A tool that:
 
 %prep
 %autosetup -n libtree-%{version}
-# preserve timestamps
+# preserve timestamps https://github.com/haampie/libtree/pull/64
 sed -r -i 's/\b(cp )/\1-p /' Makefile
 # remove failing tests
 rm -rf tests/07_origin_is_relative_to_symlink_location_not_realpath
@@ -41,4 +41,6 @@ rm -rf tests/08_nodeflib
 %license LICENSE
 
 %changelog
-%autochangelog
+* Mon Dec 27 2021 Mikel Olasagasti Uranga <mikel@olasagasti.info> - 3.0.1-1
+- Initial package
+
